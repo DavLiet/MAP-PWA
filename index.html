@@ -2,33 +2,562 @@
 <html class="js no-touchevents" lang="en">
 
 <head>
-    <meta charset="utf-8">
+ 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sky-High Airport Arrivals</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+      <!--Bootstrap-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link async rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,600,300italic,600italic" rel="stylesheet" type="text/css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#29BDBB">
     <link rel="icon" sizes="192x192" href="launcher-icon-8x.png">
+    
+    
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+          position: relative;
+      }
+        #nav{
+            z-index: 99;
+            position: absolute;
+            right: 5%;
+            top: 5%;
+        }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
 </head>
 
-<body>
-    <header>
-        <div class="content">
-            <h3>NASA ROX</h3>
+
+  <body onload="document.getElementById('nav').click();">
+      
+      
+  
+     
+          <button id="nav" type="button" class="btn btn-warning" data-toggle="modal" data-target=".bs-example-modal-sm">Reset</button>
+      
+  
+ 
+        
+        
+        
+        
+    
+  
+
+      
+       <div class="container-fluid" id="map"></div>
+    
+      <!-- Large modal -->
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      
+    
+        
+        <div class="container-fluid">
+            
+            <div class="row">
+                <div class="col-sm-12">
+                <b>Start: </b>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-sm-12">
+                
+                 
+        <select id="start" class="selectpicker" data-live-search="true" >
+    <option id="myloc" value="geolocate">Curent Location</option> 
+    <option value="29.552874, -95.093322">Building 110</option>
+        <option value="29.55525, -95.08796">Building 1</option>
+      <option value="29.555137, -95.089203">Building 2</option>
+      <option value="29.555190, -95.086997">Building 3</option>
+      <option value="29.555774,-95.086592">Building 4</option>
+      <option value="29.555841, -95.085241">Building 5</option>
+      <option value="29.553781, -95.094382">Rocket Park</option>
+      <option value="29.557236, -95.085980">Building 7</option>
+      <option value="29.558426, -95.086441">Building 8</option>
+      <option value="29.559019, -95.086252">Building 9</option>
+      <option value="29.558944, -95.086114">Building 10</option>
+      <option value="29.558729, -95.087546">Building 11</option>
+      <option value="29.557126, -95.088665">Building 12</option>
+      <option value="29.555193, -95.090136">Building 13</option>
+       <option value="29.556786, -95.092835">Building 14</option>
+        <option value="29.555554, -95.091086">Building 15</option>
+        <option value="29.556226, -95.089691">Building 16</option>
+        <option value="29.556637, -95.091075">Building 17</option>
+        <option value="29.560081, -95.090807">Building 20</option>
+        <option value="29.56185, -95.08947">Building 24</option>
+        <option value = "29.56121, -95.09">Building 25</option>
+        <option value="29.55877, -95.08222">Building 26</option>
+        <option value="29.55802, -95.08231">Building 27</option>
+        <option value="29.55776, -95.08293">Building 28</option>
+        <option value="29.55691, -95.08503">Building 29</option>
+        <option value="29.560081, -95.090807">Mission Control (30)</option>
+        <option value="29.559110, -95.083511">Building 31</option>
+        <option value="29.560808, -95.088328">Building 32</option>
+        <option value="29.56022, -95.08723">Building 33</option>
+        <option value="29.55664, -95.08544">Building 34</option>
+        <option value="29.55548, -95.08382">Building 35</option>
+        <option value="29.56158, -95.08763">Building 36</option>
+        <option value="29.56054, -95.08291">Building 37</option>
+        <option value="29.56103, -95.08661">Building 42</option>
+        <option value="29.56077, -95.08746">Building 43</option>
+        <option value="29.56115, -95.09223">Building 44</option>
+        <option value="29.56115, -95.09223">Building 45</option>
+        <option value="29.55894, -95.08994">Building 46</option>
+        <option value="29.55883, -95.0891">Building 48</option>
+        <option value="29.56294, -95.08756">Building 49</option>
+        <option value="29.5625, -95.08742">Building 50</option>
+        <option value="29.56097, -95.08534">Building 52</option>
+        <option value="29.5619, -95.0869">Building 56</option>
+        <option value="29.56182, -95.08666">Building 57</option>
+        <option value="29.56087, -95.08458">Building 59</option>
+        
+        <option value="29.56117, -95.08117">Building 229</option>
+        <option value="29.56143, -95.08104">Building 228</option>
+        <option value="29.56172, -95.08182">Building 227</option>
+        <option value="29.56201, -95.08086">Building 267</option>
+        <option value="29.5621, -95.08121">Building 261</option>
+        <option value="29.56233, -95.08161">Building 263</option>
+        <option value="29.56295, -95.0819">Building 266</option>
+        <option value="29.5633, -95.082">Building 272</option>
+        <option value="29.56363, -95.08165">Building 269</option>
+        <option value="29.56317, -95.08113">Building 266</option>
+        <option value="29.56385, -95.08081">Building 268</option>
+        <option value="29.56164, -95.08004">Building 260</option>
+        <option value="29.56197, -95.07954">Building 259</option>
+        <option value="29.56078, -95.07903">Building 231</option>
+        <option value="29.56061, -95.07917">Building 230</option>
+        <option value="29.56061, -95.07917">Building 232</option>
+        
+        <option value="29.56254, -95.08418">Building 222</option>
+        <option value="29.5631, -95.08522">Building 221</option>
+        <option value="29.56352, -95.0862">Building 220</option>
+        <option value="29.5635, -95.08359">Building 241</option>
+        
+        <option value="29.5657, -95.08619">Child Daycare (211)</option>
+        <option value="29.56789, -95.08649">Building 382</option>
+        <option value="29.56822, -95.08648">Building 380</option>
+        <option value="29.56842, -95.08612">Building 381</option>
+        <option value="29.56906, -95.08441">Gilruth Center</option>
+        <option value="29.5693, -95.08709">Building 383</option>
+        <option value="29.56937, -95.08368">Building 208</option>
+        
+        <option value="29.56615, -95.09278">Building 350</option>
+        <option value="29.56623, -95.09253">Building 357</option>
+        <option value="29.5665, -95.09273">Building 355</option>
+        <option value="29.56687, -95.0925">Building 359</option>
+        <option value="29.56656, -95.09026">Building 352</option>
+        <option value="29.56771, -95.09222">Building 361</option>
+        <option value="29.56808, -95.09418">Building 351</option>
+        <option value="29.56839, -95.09408">Building 360</option>
+        <option value="29.56951, -95.09422">Building 354</option>
+        <option value="29.56998, -95.0926">Building 353</option>
+        
+        <option value="29.56882, -95.09833">Building 330</option>
+        <option value="29.56905, -95.09821">Building 343A</option>
+        <option value="29.56924, -95.0981">Building 343</option>
+        <option value="29.56907, -95.09893">Building 329</option>
+        <option value="29.56985, -95.09758">Building 347</option>
+        <option value="29.56982, -95.09839">Building 342</option>
+        <option value="29.56929, -95.09957">Building 327</option>
+        <option value="29.56952, -95.10005">Building 325</option>
+        <option value="29.56979, -95.09971">Building 321</option>
+        <option value="29.56967, -95.09939">Building 304</option>
+        <option value="29.56917, -95.10115">Building 322</option>
+        <option value="29.56925, -95.10092">Building 319</option>
+        <option value="29.5701, -95.10062">Building 323</option>
+        <option value="29.57057, -95.10049">Building 320</option>
+        <option value="29.5714, -95.0999">Building 333</option>
+        <option value="29.5716, -95.0994">Building 333A</option>
+        <option value="29.57027, -95.09952">Building 326</option>
+        <option value="29.57069, -95.09924">Building 326A</option>
+        <option value="29.57012, -95.09922">Building 328</option>
+        <option value="29.57091, -95.09894">Building 326E</option>
+        <option value="29.57222, -95.09944">Building 336</option>
+        <option value="29.57196, -95.09927">Building 335</option>
+        <option value="29.57232, -95.09906">Building 337</option>
+        <option value="29.57226, -95.09885">Building 334</option>
+        <option value="29.57275, -95.09886">Building 349</option>
+        <option value="29.57264, -95.0986">Building 348</option>
+        <option value="29.57285, -95.09801">Building 338</option>
+        
+        <option value="29.56825, -95.10098">Building 419</option>
+        <option value="29.56773, -95.10071">Building 420</option>
+        <option value="29.56741, -95.10151">Building 417</option>
+        <option value="29.56707, -95.10207">Building 416</option>
+        <option value="29.56652, -95.10203">Building 413</option>
+        <option value="29.5664, -95.10182">Building 412</option>
+        <option value="29.56644, -95.1004">Building 418</option>
+        <option value="29.56636, -95.10047">Building 411</option>
+        <option value="29.56613, -95.1009">Building 424</option>
+        <option value="29.56604, -95.10061">Building 423</option>
+        <option value="29.56637, -95.09956">Building 422</option>
+        <option value="29.56574, -95.09991">Building 425</option>
+        <option value="29.56622, -95.09869">Building 421</option>
+    </select>
+                
+                
+                </div>
+            </div>
+            
+            
+             <div class="row">
+                <div class="col-sm-12">
+                <b>End: </b>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-sm-12">
+                
+                 
+    <select id="end" class="selectpicker" data-live-search="true">
+     <option value="29.552874, -95.093322">Building 110</option>
+        <option value="29.55525, -95.08796">Building 1</option>
+      <option value="29.555137, -95.089203">Building 2</option>
+      <option value="29.555190, -95.086997">Building 3</option>
+      <option value="29.555774,-95.086592">Building 4</option>
+      <option value="29.555841, -95.085241">Building 5</option>
+      <option value="29.553781, -95.094382">Rocket Park</option>
+      <option value="29.557236, -95.085980">Building 7</option>
+      <option value="29.558426, -95.086441">Building 8</option>
+      <option value="29.559019, -95.086252">Building 9</option>
+      <option value="29.558944, -95.086114">Building 10</option>
+      <option value="29.558729, -95.087546">Building 11</option>
+      <option value="29.557126, -95.088665">Building 12</option>
+      <option value="29.555193, -95.090136">Building 13</option>
+       <option value="29.556786, -95.092835">Building 14</option>
+        <option value="29.555554, -95.091086">Building 15</option>
+        <option value="29.556226, -95.089691">Building 16</option>
+        <option value="29.556637, -95.091075">Building 17</option>
+        <option value="29.560081, -95.090807">Building 20</option>
+        <option value="29.56185, -95.08947">Building 24</option>
+        <option value = "29.56121, -95.09">Building 25</option>
+        <option value="29.55877, -95.08222">Building 26</option>
+        <option value="29.55802, -95.08231">Building 27</option>
+        <option value="29.55776, -95.08293">Building 28</option>
+        <option value="29.55691, -95.08503">Building 29</option>
+        <option value="29.560081, -95.090807">Mission Control (30)</option>
+        <option value="29.559110, -95.083511">Building 31</option>
+        <option value="29.560808, -95.088328">Building 32</option>
+        <option value="29.56022, -95.08723">Building 33</option>
+        <option value="29.55664, -95.08544">Building 34</option>
+        <option value="29.55548, -95.08382">Building 35</option>
+        <option value="29.56158, -95.08763">Building 36</option>
+        <option value="29.56054, -95.08291">Building 37</option>
+        <option value="29.56103, -95.08661">Building 42</option>
+        <option value="29.56077, -95.08746">Building 43</option>
+        <option value="29.56115, -95.09223">Building 44</option>
+        <option value="29.56115, -95.09223">Building 45</option>
+        <option value="29.55894, -95.08994">Building 46</option>
+        <option value="29.55883, -95.0891">Building 48</option>
+        <option value="29.56294, -95.08756">Building 49</option>
+        <option value="29.5625, -95.08742">Building 50</option>
+        <option value="29.56097, -95.08534">Building 52</option>
+        <option value="29.5619, -95.0869">Building 56</option>
+        <option value="29.56182, -95.08666">Building 57</option>
+        <option value="29.56087, -95.08458">Building 59</option>
+        
+        <option value="29.56117, -95.08117">Building 229</option>
+        <option value="29.56143, -95.08104">Building 228</option>
+        <option value="29.56172, -95.08182">Building 227</option>
+        <option value="29.56201, -95.08086">Building 267</option>
+        <option value="29.5621, -95.08121">Building 261</option>
+        <option value="29.56233, -95.08161">Building 263</option>
+        <option value="29.56295, -95.0819">Building 266</option>
+        <option value="29.5633, -95.082">Building 272</option>
+        <option value="29.56363, -95.08165">Building 269</option>
+        <option value="29.56317, -95.08113">Building 266</option>
+        <option value="29.56385, -95.08081">Building 268</option>
+        <option value="29.56164, -95.08004">Building 260</option>
+        <option value="29.56197, -95.07954">Building 259</option>
+        <option value="29.56078, -95.07903">Building 231</option>
+        <option value="29.56061, -95.07917">Building 230</option>
+        <option value="29.56061, -95.07917">Building 232</option>
+        
+        <option value="29.56254, -95.08418">Building 222</option>
+        <option value="29.5631, -95.08522">Building 221</option>
+        <option value="29.56352, -95.0862">Building 220</option>
+        <option value="29.5635, -95.08359">Building 241</option>
+        
+        <option value="29.5657, -95.08619">Child Daycare (211)</option>
+        <option value="29.56789, -95.08649">Building 382</option>
+        <option value="29.56822, -95.08648">Building 380</option>
+        <option value="29.56842, -95.08612">Building 381</option>
+        <option value="29.56906, -95.08441">Gilruth Center</option>
+        <option value="29.5693, -95.08709">Building 383</option>
+        <option value="29.56937, -95.08368">Building 208</option>
+        
+        <option value="29.56615, -95.09278">Building 350</option>
+        <option value="29.56623, -95.09253">Building 357</option>
+        <option value="29.5665, -95.09273">Building 355</option>
+        <option value="29.56687, -95.0925">Building 359</option>
+        <option value="29.56656, -95.09026">Building 352</option>
+        <option value="29.56771, -95.09222">Building 361</option>
+        <option value="29.56808, -95.09418">Building 351</option>
+        <option value="29.56839, -95.09408">Building 360</option>
+        <option value="29.56951, -95.09422">Building 354</option>
+        <option value="29.56998, -95.0926">Building 353</option>
+        
+        <option value="29.56882, -95.09833">Building 330</option>
+        <option value="29.56905, -95.09821">Building 343A</option>
+        <option value="29.56924, -95.0981">Building 343</option>
+        <option value="29.56907, -95.09893">Building 329</option>
+        <option value="29.56985, -95.09758">Building 347</option>
+        <option value="29.56982, -95.09839">Building 342</option>
+        <option value="29.56929, -95.09957">Building 327</option>
+        <option value="29.56952, -95.10005">Building 325</option>
+        <option value="29.56979, -95.09971">Building 321</option>
+        <option value="29.56967, -95.09939">Building 304</option>
+        <option value="29.56917, -95.10115">Building 322</option>
+        <option value="29.56925, -95.10092">Building 319</option>
+        <option value="29.5701, -95.10062">Building 323</option>
+        <option value="29.57057, -95.10049">Building 320</option>
+        <option value="29.5714, -95.0999">Building 333</option>
+        <option value="29.5716, -95.0994">Building 333A</option>
+        <option value="29.57027, -95.09952">Building 326</option>
+        <option value="29.57069, -95.09924">Building 326A</option>
+        <option value="29.57012, -95.09922">Building 328</option>
+        <option value="29.57091, -95.09894">Building 326E</option>
+        <option value="29.57222, -95.09944">Building 336</option>
+        <option value="29.57196, -95.09927">Building 335</option>
+        <option value="29.57232, -95.09906">Building 337</option>
+        <option value="29.57226, -95.09885">Building 334</option>
+        <option value="29.57275, -95.09886">Building 349</option>
+        <option value="29.57264, -95.0986">Building 348</option>
+        <option value="29.57285, -95.09801">Building 338</option>
+        
+        <option value="29.56825, -95.10098">Building 419</option>
+        <option value="29.56773, -95.10071">Building 420</option>
+        <option value="29.56741, -95.10151">Building 417</option>
+        <option value="29.56707, -95.10207">Building 416</option>
+        <option value="29.56652, -95.10203">Building 413</option>
+        <option value="29.5664, -95.10182">Building 412</option>
+        <option value="29.56644, -95.1004">Building 418</option>
+        <option value="29.56636, -95.10047">Building 411</option>
+        <option value="29.56613, -95.1009">Building 424</option>
+        <option value="29.56604, -95.10061">Building 423</option>
+        <option value="29.56637, -95.09956">Building 422</option>
+        <option value="29.56574, -95.09991">Building 425</option>
+        <option value="29.56622, -95.09869">Building 421</option>
+        
+    </select>
+                
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12">
+                <b>Transport</b>
+                </div>
+            
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12">
+                
+                
+        <select id="transport" class="selectpicker">
+        <option value="DRIVING">Driving</option>
+        <option value="WALKING">Walking</option>
+        </select>
+                
+                </div>
+            </div>
+            
+           
         </div>
-    </header>
-    <div class="container">
-        <div id="main" class="content">
-            <ul class="arrivals-list" data-bind="foreach: arrivals">
-                <li class="item">
-                    <span class="title" data-bind="html: title"></span>
-                    <span class="status" data-bind="html: status"></span>
-                    <span class="time" data-bind="html: time"></span>
-                </li>
-            </ul>
-        </div>
+        
+        
+        <div class="modal-footer">
+        <button id="go" type="button" class="btn btn-success" data-dismiss="modal">Go</button>
+      </div>
+        
+        
     </div>
+  </div>
+</div>
+       
+        
+     
+ 
+      
+      
+    
+    <script>
+        
+    
+        
+        
+      var geolocate; //set geolocate as a global variable
+      var option; //allows the user to either get their location or pick an artificial starting point
+      var travel; //allows user to select type of transportation
+        
+        
+        function getLocation(){
+            
+             if(navigator.geolocation)  //if you can find the location then...
+       {   
+           
+           navigator.geolocation.getCurrentPosition(function(position) {
+                    geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); //sets current position
+               
+                
+                    var marker = new google.maps.Marker({  //creates marker at current position
+                    position: geolocate,
+                    map: map,
+                    });
+                    map.setCenter(geolocate); //centers the google map on current position
+                }); 
+       }
+            //alert("what");
+            
+        }
+        
+        
+      function initMap() {
+          
+          
+        var directionsService = new google.maps.DirectionsService;      //initializes directionsService and directionsDisplay
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {    //initializes map
+          zoom: 16,
+        });
+          
+          
+          
+          
+          
+       if(navigator.geolocation)  //if you can find the location then...
+       {   
+           
+           navigator.geolocation.getCurrentPosition(function(position) {
+                    geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); //sets current position
+               
+                
+                    var marker = new google.maps.Marker({  //creates marker at current position
+                    position: geolocate,
+                    map: map,
+                    });
+                    map.setCenter(geolocate); //centers the google map on current position
+                }); 
+       }
+          
+          
+        directionsDisplay.setMap(map);
+          
+        var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+          
+        document.getElementById('go').addEventListener('click', onChangeHandler); 
+          
+      }  //end of initMap()
+        
+        
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+          
+               if(document.getElementById('start').value == "geolocate"){  //if the user wants their location, set option to current position
+                   option = geolocate;
+               }
+                else{
+                option = document.getElementById('start').value;       //otherwise set start to artificial location
+                }
+          
+          
+                if(document.getElementById('transport').value == "DRIVING"){   //sets the mode of transport of individual
+                    travel = 'DRIVING';
+                }
+                else{
+                    travel = 'WALKING';
+                }
+             
+         
+          
+        directionsService.route({
+          origin:  option,
+          destination: document.getElementById('end').value,
+          travelMode: travel,
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+        
+        
+        
+        
+        
+    
+        
+     
+        function fail(){
+            alert("something went wrong");
+        }
+        
+        
+        if(navigator.geolocation){    //gets current position every 3 sec
+            getLocation();
+            setInterval(function(){
+                getLocation();
+            }, 3000);
+        }
+        
+        
+        
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc4W6N4eBrREAhMYSl-0D6CSa5oFj3_Ug&callback=initMap">
+    </script>
+      
+      <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
+ 
     <script src="vendor.min.js"></script>
     <script src="script.min.js"></script>
 </body>

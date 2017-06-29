@@ -63,7 +63,7 @@
       
   
      
-          <button id="nav" type="button" class="btn btn-warning" data-toggle="modal" data-target=".bs-example-modal-sm">Reset</button>
+          <button id="nav" type="button" class="btn btn-warning" data-toggle="modal" data-target=".bs-example-modal-sm">Woke</button>
       
   
  
@@ -415,11 +415,7 @@
        
         
      
- 
-      
-      
-    
-    <script>
+ <script>
         
     
         
@@ -429,32 +425,13 @@
       var travel; //allows user to select type of transportation
        var options; // for accuracy
         
-        function getLocation(){
-            
-             if(navigator.geolocation)  //if you can find the location then...
-       {   
-           
-           navigator.geolocation.getCurrentPosition(function(position) {
-                    geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); //sets current position
-               
-                
-                    var marker = new google.maps.Marker({  //creates marker at current position
-                    position: geolocate,
-                    map: map,
-                    });
-                    map.setCenter(geolocate); //centers the google map on current position
-                }); 
-       }
-            //alert("what");
-            
-        }
-        
         
       function initMap() {
           
           
         var directionsService = new google.maps.DirectionsService;      //initializes directionsService and directionsDisplay
         var directionsDisplay = new google.maps.DirectionsRenderer;
+          
         var map = new google.maps.Map(document.getElementById('map'), {    //initializes map
           zoom: 16,
         });
@@ -467,18 +444,18 @@
            
           };
           
+       var marker = new google.maps.Marker;
           
        if(navigator.geolocation)  //if you can find the location then...
        {   
            
-           navigator.geolocation.getCurrentPosition(function(position) {
+           navigator.geolocation.watchPosition(function(position) {
+               
                     geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); //sets current position
                
                 
-                    var marker = new google.maps.Marker({  //creates marker at current position
-                    position: geolocate,
-                    map: map,
-                    });
+                    marker.setPosition(geolocate);
+                    marker.setMap(map);
                     map.setCenter(geolocate); //centers the google map on current position
                 },function(){
             handleLocationError(true,marker,map.getCenter());
@@ -541,16 +518,15 @@
         }
         
         
-        if(navigator.geolocation){    //gets current position every 3 sec
-            getLocation();
-            setInterval(function(){
-                getLocation();
-            }, 3000);
-        }
+       
         
         
         
     </script>
+      
+      
+    
+   
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc4W6N4eBrREAhMYSl-0D6CSa5oFj3_Ug&callback=initMap">
     </script>

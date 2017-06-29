@@ -427,7 +427,7 @@
       var geolocate; //set geolocate as a global variable
       var option; //allows the user to either get their location or pick an artificial starting point
       var travel; //allows user to select type of transportation
-        
+       var options; // for accuracy
         
         function getLocation(){
             
@@ -460,7 +460,12 @@
         });
           
           
-          
+          options = {
+           enableHighAccuracy: true,
+           timeout: Infinity,
+           maximumAge:0
+           
+          };
           
           
        if(navigator.geolocation)  //if you can find the location then...
@@ -475,7 +480,9 @@
                     map: map,
                     });
                     map.setCenter(geolocate); //centers the google map on current position
-                }); 
+                },function(){
+            handleLocationError(true,marker,map.getCenter());
+           },options); 
        }
           
           

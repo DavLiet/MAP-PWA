@@ -4,7 +4,7 @@
   "description": "Find your way around Johnson Space Center",
   "icons": [
     {
-      "src": "icon-48.png",
+      "src": "launcher-icon.png",
       "sizes": "48x48",
       "type": "image/png"
     },

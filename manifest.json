@@ -4,28 +4,28 @@
   "description": "Find your way around Johnson Space Center",
   "icons": [
     {
-      "src": "launcher-icon.png",
-      "sizes": "48x48",
+      "src": "NASA-logo-58x48.png",
+      "sizes": "58x48",
       "type": "image/png"
     },
     {
-      "src": "launcher-icon-96.png",
-      "sizes": "96x96",
+      "src": "NASA-logo-96x79.png",
+      "sizes": "96x79",
       "type": "image/png"
     },
     {
-      "src": "launcher-icon-144.png",
-      "sizes": "144x144",
+      "src": "NASA-logo-144x119.png",
+      "sizes": "144x119",
       "type": "image/png"
     },
     {
-      "src": "launcher-icon-192.png",
-      "sizes": "192x192",
+      "src": "NASA-logo-192x159.png",
+      "sizes": "192x159",
       "type": "image/png"
     },
     {
-      "src": "launcher-icon-256.png",
-      "sizes": "256x256",
+      "src": "NASA-logo-256x212.png",
+      "sizes": "256x212",
       "type": "image/png"
     }
   ],

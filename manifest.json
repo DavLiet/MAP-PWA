@@ -14,18 +14,18 @@
       "type": "image/png"
     },
     {
-      "src": "NASA-logo-144x119.png",
-      "sizes": "144x119",
+      "src": "launcher-icon-144.png",
+      "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "NASA-logo-192x159.png",
-      "sizes": "192x159",
+      "src": "launcher-icon-192.png",
+      "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "NASA-logo-256x212.png",
-      "sizes": "256x212",
+      "src": "launcher-icon-256.png",
+      "sizes": "256x256",
       "type": "image/png"
     }
   ],

@@ -20,13 +20,4 @@ window.addEventListener('offline', function(e) {
     Page.showOfflineWarning();
 }, false);
 
-// check if the user is connected
-if (navigator.onLine) {
-    Arrivals.loadData();
-} else {
-    // show offline message
-    Page.showOfflineWarning();
-}
 
-// set knockout view model bindings
-ko.applyBindings(Page.vm);

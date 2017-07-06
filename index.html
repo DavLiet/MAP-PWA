@@ -766,7 +766,6 @@
       var travel; //allows user to select type of transportation
        var options; // for accuracy
   
-  var map; //google map
   
         
         
@@ -776,24 +775,12 @@
         var directionsService = new google.maps.DirectionsService;      //initializes directionsService and directionsDisplay
         var directionsDisplay = new google.maps.DirectionsRenderer;
           
-         map = new google.maps.Map(document.getElementById('map'), {    //initializes map
+       var map = new google.maps.Map(document.getElementById('map'), {    //initializes map
           zoom: 18,
         });
        
        
-         //Polygons for parking
-  var path = [[29.554146, -95.090565], [29.553719, -95.089514], [29.552856, -95.089994],	[29.553281, -95.091019]];
-
-var parking = new google.maps.Polygon({
-          paths: path,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: '#FF0000',
-          fillOpacity: 0.35
-        });
-        parking.setMap(map);
-  //
+         
           
           
           options = {

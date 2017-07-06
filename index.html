@@ -765,6 +765,20 @@
       var option; //allows the user to either get their location or pick an artificial starting point
       var travel; //allows user to select type of transportation
        var options; // for accuracy
+  
+  
+  //Polygons for parking
+  var path = [[29.554146, -95.090565], [29.553719, -95.089514], [29.552856, -95.089994],	[29.553281, -95.091019]];
+
+polygon = map.drawPolygon({
+  paths: path, // pre-defined polygon shape
+  strokeColor: '#BBD8E9',
+  strokeOpacity: 1,
+  strokeWeight: 3,
+  fillColor: '#BBD8E9',
+  fillOpacity: 0.6
+});
+  //
         
         
       function initMap() {

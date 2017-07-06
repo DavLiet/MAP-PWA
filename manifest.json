@@ -32,7 +32,13 @@
       "src": "nasa-384.png",
       "sizes": "384x384",
       "type": "image/png"
+    },
+    {
+      "src": "nasa-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
+    
   ],
   "start_url": "https://davliet.github.io/MAP-PWA/?utm_source=web_app_manifest",
   "display": "standalone",

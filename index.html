@@ -790,7 +790,13 @@
           };
      
           
-       var marker = new google.maps.Marker;
+       var marker = new google.maps.Marker({
+           icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10
+          },
+           animation: google.maps.Animation.DROP
+       });
           
        if(navigator.geolocation)  //if you can find the location then...
        {   
@@ -802,6 +808,7 @@
                 
                     marker.setPosition(geolocate);
                     marker.setMap(map);
+                    
                     map.setCenter(geolocate); //centers the google map on current position
                 },function(){
             handleLocationError(true,marker,map.getCenter());

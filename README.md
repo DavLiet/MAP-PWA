@@ -3,6 +3,8 @@ Lighthouse, an open-source tool that audits webpages for performance and accesib
 
 jscmap.com is hosted on godaddy.com (To edit website and upload/edit files, please contact Stacy Shutts @ stacy.e.shutts@nasa.gov for the login information)
 
+png images come from https://pngtree.com
+
 
 Version #2: Added an app install banner, styled map with custom colors, automatically center map on jsc campus, added astronaut gps marker
 

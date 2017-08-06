@@ -18,9 +18,120 @@
         var directionsDisplay = new google.maps.DirectionsRenderer;
           
        var map = new google.maps.Map(document.getElementById('map'), {    //initializes map
-          zoom: 18,
+          zoom: 16,
+           center: {lat: 29.558488, lng: -95.087177},
+           styles: [
+    {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "saturation": 23
+            },
+            {
+                "lightness": "-8"
+            },
+            {
+                "visibility": "simplified"
+            },
+            {
+                "hue": "#00ff6c"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "hue": "#7DC45C"
+            },
+            {
+                "saturation": 37
+            },
+            {
+                "lightness": -41
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#A19FA0"
+            },
+            {
+                "saturation": -98
+            },
+            {
+                "lightness": -20
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 100
+            },
+            {
+                "visibility": "simplified"
+            },
+            {
+                "hue": "#ff0000"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#3498db"
+            },
+            {
+                "saturation": "81"
+            },
+            {
+                "lightness": "0"
+            },
+            {
+                "weight": "2.28"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "hue": "#71ABC3"
+            },
+            {
+                "saturation": -10
+            },
+            {
+                "lightness": -21
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    }
+]
         });
-       
+        
        
          
           
@@ -33,11 +144,10 @@
           };
      
           
+          var astro = 'astro.png';
+          
        var marker = new google.maps.Marker({
-           icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 10
-          },
+           icon: astro,
            animation: google.maps.Animation.DROP
        });
           

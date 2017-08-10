@@ -1,0 +1,40 @@
+
+
+
+#direction{
+    float: left;
+    font-size: 12px;
+}
+
+#go{
+
+    float:right;
+}
+#map {
+    height: 100%;
+    position: relative;
+}
+#nav{
+    z-index: 99;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#floating-panel {
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+}

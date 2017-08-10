@@ -1,4 +1,6 @@
-//This is the "Offline page" service worker
+
+//This service worker prompts users with an 'install' banner so they can download on launcher
+
 
 //Install stage sets up the offline page in the cahche and opens a new cache
 self.addEventListener('install', function(event) {

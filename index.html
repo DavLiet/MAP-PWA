@@ -10,47 +10,50 @@
         <!--CSS stylesheet-->
         <link rel="stylesheet" type="text/css" href="style.css">
 
-        
+        <!--jQuery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <meta charset="utf-8">
-        <!--Bootstrap-->
+        
+        <!--Bootstrap CSS-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
+        <!--Bootstrap JS-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+        
+        <!--using 'Roboto' font-->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,600,300italic,600italic" rel="stylesheet" type="text/css">
+        
+        <!--adding manifest.json-->
         <link rel="manifest" href="manifest.json">
+        
+        <!--using #e74c3c (Red) theme color-->
         <meta name="theme-color" content="#e74c3c">
+        
+        <!--adding nasa meatball logo-->
         <link rel="icon" sizes="192x192" href="nasa-192.png">
+        
+        <!--JavaScript-->
+        <script type="text/javascript" src="script.js" async></script>
 
 
 
     </head>
 
-
-    <body onload="document.getElementById('nav').click();">
-
-
+    <!--Automatically displays navigation menu on initial website load -->
+    <body onload="document.getElementById('nav').click();"> 
 
 
+
+        <!--The Reset button will display the navigation menu for users-->
         <button id="nav" type="button" class="btn btn-warning" data-toggle="modal" data-target=".bs-example-modal-sm">Reset</button>
-
-
-
-
-
-
-
-
-
-
-
+        
+        <!-- This <div> stores the google map for jscmap.com -->
         <div class="container-fluid" id="map"></div>
 
-        <!-- Large modal -->
+        
+        
+        <!-- This <div< is the entire navigation menu that allows users to set start and end points as well as mode of transportation-->
 
         <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog modal-sm" role="document">
@@ -63,7 +66,7 @@
 
 
 
-                        <div class="row">
+                        <div class="row">              <!-- This set of options will be the start destinations users can pick-->
                             <div class="col-sm-12">
                                 <b>Start: </b>
                             </div>
@@ -74,7 +77,7 @@
                             <div class="col-sm-12">
 
 
-                                <select id="start" class="selectpicker" data-live-search="true" >
+                                <select id="start" class="selectpicker" data-live-search="true" >   
                                     <option id="myloc" value="geolocate">Current Location</option> 
                                     <option value="29.552874, -95.093322">B110 (Badging)</option>
 
@@ -285,93 +288,6 @@
                                     <option> </option>
 
 
-
-
-                                    <option>--------------------</option>
-                                    <option><b>White Sands Test Facility</b></option>
-                                    <option>--------------------</option>
-
-                                    <!--
-<option val="32.50568, -106.61207">WSTF 100</option>
-<option val="32.5064, -106.61211">WSTF 101</option>
-<option val="32.50557, -106.61063">WSTF 104</option>
-<option val="32.50651, -106.61073">WSTF 107</option>
-<option val="32.50618, -106.60996">WSTF 108</option>
-<option val="32.5057, -106.61256">WSTF 110</option>
-<option val="32.50569, -106.61139">WSTF 111</option>
-<option val="32.50687, -106.61192">WSTF 112</option>
-<option val="32.50736, -106.61141">WSTF 113</option>
-<option val="32.50972, -106.61031">WSTF 114</option>
-<option val="32.50727, -106.61072">WSTF 115</option>
-<option val="32.50977, -106.61006">WSTF 118</option>
-<option val="32.50932, -106.61016">WSTF 119</option>
-<option val="32.50799, -106.61104">WSTF 120</option>
-<option val="32.50866, -106.61087">WSTF 121</option>
-<option val="32.50774, -106.60979">WSTF 148</option>
-<option val="32.50823, -106.60975">WSTF 149</option>
-<option val="32.50766, -106.60896">WSTF 150</option>
-<option val="32.50735, -106.60802">WSTF 151</option>
-<option val="32.50763, -106.60842">WSTF 152</option>
-<option val="32.507, -106.60906">WSTF 153</option>
-<option val="32.50839, -106.60902">WSTF 155</option>
-<option val="32.50735, -106.60965">WSTF 156</option>
-<option val="32.50728, -106.60901">WSTF 157</option>
-<option val="32.50781, -106.61056">WSTF 158</option>
-<option val="32.50673, -106.60843">WSTF 162</option>
-<option val="32.50734, -106.60838">WSTF 163</option>
-
-<option val="32.51816, -106.6008">WSTF 200</option>
-<option val="32.51769, -106.60119">WSTF 201</option>
-<option val="32.51761, -106.60064">WSTF 203</option>
-<option val="32.51706, -106.59999">WSTF 205</option>
-
-<option val="32.51759, -106.60348">WSTF 250</option>
-<option val="32.51743, -106.60292">WSTF 252</option>
-<option val="32.50672, -106.60882">WSTF 253</option>
-<option val="32.51732, -106.60344">WSTF 254</option>
-<option val="32.51769, -106.60258">WSTF 255</option>
-<option val="32.51571, -106.59839">WSTF 270</option>
-<option val="32.51551, -106.59894">WSTF 271</option>
-<option val="32.51471, -106.59907">WSTF 272</option>
-
-<option val="32.5259, -106.59289">WSTF 300</option>
-<option val="32.52697, -106.59246">WSTF 310</option>
-<option val="32.52617, -106.5941">WSTF 316</option>
-<option val="32.52641, -106.59426">WSTF 319</option>
-<option val="32.52544, -106.59273">WSTF 363</option>
-<option val="32.52555, -106.59252">WSTF 364</option>
-<option val="32.52576, -106.59255">WSTF 362</option>
-
-<option val="32.5235, -106.6036">WSTF 400</option>
-<option val="32.52439, -106.60288">WSTF 412</option>
-<option val="32.5242, -106.60388">WSTF 413</option>
-<option val="32.52401, -106.60377">WSTF 415</option>
-<option val="32.52403, -106.60294">WSTF 416</option>
-<option val="32.5245, -106.60481">WSTF 420</option>
-<option val="32.52352, -106.60474">WSTF 431</option>
-<option val="32.52297, -106.60364">WSTF 440</option>
-<option val="32.52391, -106.60568">WSTF 447</option>
-<option val="32.52363, -106.60286">WSTF 460</option>
-<option val="32.52345, -106.60332">WSTF 462</option>
-<option val="32.52304, -106.60329">WSTF 463</option>
-<option val="32.52267, -106.60333">WSTF 464</option> -->
-
-                                    <!--  <option val="">WSTF 501</option>
-<option val="">WSTF 511</option>
-<option val="">WSTF 521</option>-->
-
-                                    <!-- <option val="32.50809, -106.61301">WSTF 633</option>
-<option val="32.5083, -106.61306">WSTF 634</option>
-<option val="32.50787, -106.61261">WSTF 636</option>
-<option val="32.50853, -106.61271">WSTF 637</option>
-<option val="32.50838, -106.61232">WSTF 638</option>
-
-<option val="32.51855, -106.59942">WSTF 800</option>
-<option val="32.51825, -106.59926">WSTF 801</option>
-<option val="32.51814, -106.59945">WSTF 802</option>
-<option val="32.51799, -106.59986">WSTF 803</option>
-<option val="32.51771, -106.6">WSTF 804</option>
-<option val="32.51889, -106.59854">WSTF 805</option> -->
                                 </select>
 
 
@@ -379,7 +295,7 @@
                         </div>
 
 
-                        <div class="row">
+                        <div class="row">                 <!-- This set of options will be the end destinations users can pick-->
                             <div class="col-sm-12">
                                 <b>End: </b>
                             </div>
@@ -598,96 +514,7 @@
                                     <option value="29.61038, -95.17129">E1057</option>
                                     <option> </option>
                                     <option> </option>
-
-
-
-                                    <option>--------------------</option>
-                                    <option><b>White Sands Test Facility</b></option>
-                                    <option>--------------------</option>
-
-                                    <!--  <option val="32.435060, -106.613970">TEST WSTF</option>
-<option val="32.50568, -106.61207">WSTF 100</option>
-<option val="32.5064, -106.61211">WSTF 101</option>
-<option val="32.50557, -106.61063">WSTF 104</option>
-<option val="32.50651, -106.61073">WSTF 107</option>
-<option val="32.50618, -106.60996">WSTF 108</option>
-<option val="32.5057, -106.61256">WSTF 110</option>
-<option val="32.50569, -106.61139">WSTF 111</option>
-<option val="32.50687, -106.61192">WSTF 112</option>
-<option val="32.50736, -106.61141">WSTF 113</option>
-<option val="32.50972, -106.61031">WSTF 114</option>
-<option val="32.50727, -106.61072">WSTF 115</option>
-<option val="32.50977, -106.61006">WSTF 118</option>
-<option val="32.50932, -106.61016">WSTF 119</option>
-<option val="32.50799, -106.61104">WSTF 120</option>
-<option val="32.50866, -106.61087">WSTF 121</option>
-<option val="32.50774, -106.60979">WSTF 148</option>
-<option val="32.50823, -106.60975">WSTF 149</option>
-<option val="32.50766, -106.60896">WSTF 150</option>
-<option val="32.50735, -106.60802">WSTF 151</option>
-<option val="32.50763, -106.60842">WSTF 152</option>
-<option val="32.507, -106.60906">WSTF 153</option>
-<option val="32.50839, -106.60902">WSTF 155</option>
-<option val="32.50735, -106.60965">WSTF 156</option>
-<option val="32.50728, -106.60901">WSTF 157</option>
-<option val="32.50781, -106.61056">WSTF 158</option>
-<option val="32.50673, -106.60843">WSTF 162</option>
-<option val="32.50734, -106.60838">WSTF 163</option>
-
-<option val="32.51816, -106.6008">WSTF 200</option>
-<option val="32.51769, -106.60119">WSTF 201</option>
-<option val="32.51761, -106.60064">WSTF 203</option>
-<option val="32.51706, -106.59999">WSTF 205</option>
-
-<option val="32.51759, -106.60348">WSTF 250</option>
-<option val="32.51743, -106.60292">WSTF 252</option>
-<option val="32.50672, -106.60882">WSTF 253</option>
-<option val="32.51732, -106.60344">WSTF 254</option>
-<option val="32.51769, -106.60258">WSTF 255</option>
-<option val="32.51571, -106.59839">WSTF 270</option>
-<option val="32.51551, -106.59894">WSTF 271</option>
-<option val="32.51471, -106.59907">WSTF 272</option>
-
-<option val="32.5259, -106.59289">WSTF 300</option>
-<option val="32.52697, -106.59246">WSTF 310</option>
-<option val="32.52617, -106.5941">WSTF 316</option>
-<option val="32.52641, -106.59426">WSTF 319</option>
-<option val="32.52544, -106.59273">WSTF 363</option>
-<option val="32.52555, -106.59252">WSTF 364</option>
-<option val="32.52576, -106.59255">WSTF 362</option>
-
-<option val="32.5235, -106.6036">WSTF 400</option>
-<option val="32.52439, -106.60288">WSTF 412</option>
-<option val="32.5242, -106.60388">WSTF 413</option>
-<option val="32.52401, -106.60377">WSTF 415</option>
-<option val="32.52403, -106.60294">WSTF 416</option>
-<option val="32.5245, -106.60481">WSTF 420</option>
-<option val="32.52352, -106.60474">WSTF 431</option>
-<option val="32.52297, -106.60364">WSTF 440</option>
-<option val="32.52391, -106.60568">WSTF 447</option>
-<option val="32.52363, -106.60286">WSTF 460</option>
-<option val="32.52345, -106.60332">WSTF 462</option>
-<option val="32.52304, -106.60329">WSTF 463</option>
-<option val="32.52267, -106.60333">WSTF 464</option> -->
-
-                                    <!--  <option val="">WSTF 501</option>
-<option val="">WSTF 511</option>
-<option val="">WSTF 521</option>-->
-
-                                    <!--<option val="32.50809, -106.61301">WSTF 633</option>
-<option val="32.5083, -106.61306">WSTF 634</option>
-<option val="32.50787, -106.61261">WSTF 636</option>
-<option val="32.50853, -106.61271">WSTF 637</option>
-<option val="32.50838, -106.61232">WSTF 638</option>
-
-<option val="32.51855, -106.59942">WSTF 800</option>
-<option val="32.51825, -106.59926">WSTF 801</option>
-<option val="32.51814, -106.59945">WSTF 802</option>
-<option val="32.51799, -106.59986">WSTF 803</option>
-<option val="32.51771, -106.6">WSTF 804</option>
-<option val="32.51889, -106.59854">WSTF 805</option> -->
-
-
+            
 
 
                                 </select>
@@ -695,7 +522,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row">                  <!--Users can choose to walk or drive-->
                             <div class="col-sm-12">
                                 <b>Transport</b>
                             </div>
@@ -718,9 +545,9 @@
                     </div>
 
 
-                    <div class="modal-footer">
-                        <p id="direction"><i>Please Turn on GPS</i></p>
-                        <button id="go" type="button" class="btn btn-success" data-dismiss="modal">Go</button>
+                    <div class="modal-footer">                 
+                        <p id="direction"><i>Please Turn on GPS</i></p>  <!--Tells users to turn on GPS-->
+                        <button id="go" type="button" class="btn btn-success" data-dismiss="modal">Go</button> <!--Pressing 'GO' overalys the directions for users -->
                     </div>
 
 
@@ -729,7 +556,6 @@
         </div>
 
 
-        <script src="script.js"></script>
 
 
 
@@ -751,12 +577,11 @@
 
 
 
-
+        <!--Uses Google Maps API-->
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc4W6N4eBrREAhMYSl-0D6CSa5oFj3_Ug&callback=initMap">
         </script>
 
-        <script src="main.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
 
